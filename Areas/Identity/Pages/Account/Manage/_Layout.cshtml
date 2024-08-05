@@ -1,0 +1,28 @@
+﻿
+@{
+    if (ViewData.TryGetValue("ParentLayout", out var parentLayout) && parentLayout !=  null)
+    {
+        Layout = parentLayout.ToString();
+    }
+    else
+    {
+        Layout = "/Views/Shared/_Layout-NoFooter.cshtml";
+    }
+    ViewData["BodyClass"] = "LayoutManageAcc";
+}
+
+
+    <div class="containerManageAcc">
+        <div class="navManageAcc">
+            <partial name="_ManageNav" />
+        </div>
+    <div class="ContentManageAcc" id="content-manage-acc">
+            @RenderBody()
+        </div>
+    </div>
+
+
+@section Scripts {
+    @RenderSection("Scripts", required: false)
+}
+

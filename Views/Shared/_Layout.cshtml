@@ -1,0 +1,118 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - Capital Forte</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.css" />
+    <link rel="stylesheet" href="~/Finances.styles.css" asp-append-version="true" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <link rel="stylesheet" href="https://cdn.datatables.net/2.1.0/css/dataTables.dataTables.css" />
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/responsive/2.5.0/css/responsive.dataTables.min.css" />
+</head>
+<body>
+    <header class="layoutHeader">
+        <nav class="navbar navbar-expand-lg navbar-light  mb-3">
+            <div class="container-fluid">
+                <!-- Navbar Brand, uncomment to use -->
+                <!-- <a class="navbar-brand" href="@Url.Action("Index", "Home", new { area = "Customer" })">
+                  <img src="~/images/justLogoTransparent.png" alt="Logo" id="logoImage"/>
+                </a> -->
+                <!-- Toggler/collapsibe Button -->
+                <button id="navbar-toggler" class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <!-- Navbar links -->
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                        <li class="nav-item">
+                            <a class="nav-link" asp-area="Customer" asp-controller="Home" asp-action="Index">Home</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" asp-area="Customer" asp-controller="Home" asp-action="About_us">About</a>
+                        </li>
+
+                        <li class="nav-item dropdown">
+                            <div class="dropdown">
+                                <button class="dropbtn">
+                                    Navigation
+                                    <i class="fa fa-caret-down"></i>
+                                </button>
+                                <div class="dropdown-content">
+                                    <a class="dropdown-item" asp-area="Customer" asp-controller="Home" asp-action="Cryptocurrency">Криптовалути</a>
+                                    <a class="dropdown-item" asp-area="Customer" asp-controller="Home" asp-action="Stocks">Акции</a>
+                                    <a class="dropdown-item" asp-area="Customer" asp-controller="Home" asp-action="Indices">Индекси</a>
+                                    <a class="dropdown-item" asp-area="Customer" asp-controller="Home" asp-action="Gold_Silver">Злато, Сребро</a>
+                                    <a class="dropdown-item" asp-area="Customer" asp-controller="Home" asp-action="ETF">ETF</a>
+                                </div>
+                            </div>
+                        </li>
+                        <li class="nav-item">
+                            @if (User.IsInRole("Admin"))
+                            {
+
+                                <div class="dropdown">
+                                    <button class="dropbtn">
+                                        Managment
+                                        <i class="fa fa-caret-down"></i>
+                                    </button>
+                                    <div class="dropdown-content">
+                                        @*      <a class="dropdown-item" asp-area="Admin" asp-controller="Category" asp-action="Index">Category</a>
+                                    <a class="dropdown-item" asp-area="Admin" asp-controller="News" asp-action="Index">News</a> *@
+                                        <a class="dropdown-item" asp-area="Admin" asp-controller="UserRoles" asp-action="ListUsers">User Managment</a>
+                                    </div>
+                                </div>
+                            }
+                    </ul>
+
+                    <!-- Login Partial -->
+                    <partial name="_LoginPartial.cshtml" />
+                </div>
+            </div>
+        </nav>
+    </header>
+        <main role="main">
+            <partial name="_Notification" />
+            @RenderBody()
+        </main>
+    <footer>
+        <div class="inline-wrapper">
+            <div class="social-icons-wrapper">
+                <a><img id="instagram" src="https://awareak.org/wp-content/uploads/2023/07/CITYPNG.COMHD-White-Instagram-Round-Logo-Icon-PNG-1600x1200-1.png" alt="Alternate Text" /></a>
+                <a><img src="https://img.icons8.com/m_rounded/200/FFFFFF/facebook-new.png" alt="Alternate Text" /></a>
+                <a><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTncNdsURrHCorSeR9usPvHN_6XPQp3toe3tA&s" alt="Alternate Text" /></a>
+            </div>
+            <div class="contact-info-wrapper">
+                <div>
+                    <p>Monday-Friday: Working Hours</p>
+                </div>          
+                <div>
+                    <p>Saturday/Sunday: Working Hours</p>
+                </div>
+                <div>
+                    <p>+0000000000 - Name of Contact</p>
+                </div>
+            </div>
+        </div>
+      <div class="links-wrapper">
+          <div class="links-left">
+                <a class="nav-link" asp-area="Customer" asp-controller="Home" asp-action="Index">Home</a>
+            </div>
+            <a class="nav-link " asp-area="Customer" asp-controller="Home" asp-action="Index">Capital Forte</a>
+          <div class="links-right">
+                <a class="nav-link" asp-area="Customer" asp-controller="Home" asp-action="About_us">About</a>
+            </div>
+       </div>
+
+    </footer>
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.datatables.net/2.1.0/js/dataTables.js"></script>
+    <script type="text/javascript" src="https://cdn.datatables.net/responsive/2.5.0/js/dataTables.responsive.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>

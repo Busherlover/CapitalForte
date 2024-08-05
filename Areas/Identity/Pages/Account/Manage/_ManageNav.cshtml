@@ -1,0 +1,40 @@
+﻿@using Finances.Models
+@inject SignInManager<ApplicationUser> SignInManager
+@{
+    var hasExternalLogins = (await SignInManager.GetExternalAuthenticationSchemesAsync()).Any();
+  
+
+}
+<head>
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+</head>
+
+<body class="managaAccBack">
+        <div class="profile navEl">
+            <i class="bx bx-user"></i>
+            <a class="nav-link @ManageNavPages.IndexNavClass(ViewContext)" id="profile" asp-page="./Index">Profile</a>     
+        </div>
+    <div class="email navEl">
+        <i class="bx bxs-envelope"></i>
+            <a class="nav-link @ManageNavPages.EmailNavClass(ViewContext)" id="email" asp-page="./Email">Email</a>
+        </div>
+    <div class="password navEl">
+        <i class="bx bxs-grid-alt"></i>
+            <a class="nav-link @ManageNavPages.ChangePasswordNavClass(ViewContext)" id="change-password" asp-page="./ChangePassword">Password</a>
+        </div>
+    <div class="two-factor-authentication navEl">
+        <i class="bx bxs-user-check"></i>
+            <a class="nav-link @ManageNavPages.TwoFactorAuthenticationNavClass(ViewContext)" id="two-factor" asp-page="./TwoFactorAuthentication">2FA</a>
+        </div>
+    <div class="personal-data navEl">
+        <i class="bx bxs-data"></i>
+            <a class="nav-link @ManageNavPages.PersonalDataNavClass(ViewContext)" id="personal-data" asp-page="./PersonalData">Personal data</a>
+        </div>
+    <div class="logout navEl">
+        <i class='bx bxs-log-out'></i>
+             <form id="logoutForm" class="form-inline" asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="@Url.Action("Index", "Home", new { area = "" })">
+                <button id="logout" type="submit" class="nav-link">Logout</button>
+             </form>
+        </div> 
+
+</body>

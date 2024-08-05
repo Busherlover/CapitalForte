@@ -1,0 +1,71 @@
+﻿@model List<News>
+
+<div class="alignMidTables">
+<div class="card shadow border-0 mt-4 ">
+    <div class="card-header bg-secondary bg-gradient m-lg-0 py-3">
+        <div class="row">
+            <div class="col-12 text-center">
+                <h2 class="text-primary py-2"> News List </h2>
+            </div>
+        </div>
+    </div>
+    <div class="card-body p-4">
+        <div class="row  pb-3">
+            <div class="col-6">
+               
+            </div>
+            <div class="col-6 text-end">
+                <a asp-controller="News" asp-action="Create" class="btn btn-primary">
+                    <i class="bi bi-plus-circle"></i> Create News
+                </a>
+            </div>
+        </div>
+
+
+        <table class="table table-bordered table-striped">
+            <thead>
+                <tr>
+                    <th>
+                        Tittle
+                    </th>
+                    <th>
+                        Description
+                    </th>
+                    <th>
+                        Create Date
+                    </th>
+                    <th>
+                        Author
+                    </th>
+                    <th></th>
+                </tr>
+
+            <thead>
+
+            <tbody>
+                        @foreach (var obj in Model.OrderByDescending(u => u.CreatedDate))
+                        {
+                    <tr>
+                        <td>@obj.Title</td>
+
+                        <td>@obj.Description</td>
+
+                        <td>@obj.CreatedDate</td>
+
+                        <td>@obj.Author</td>
+
+                        <td class="w-75 btn-group" role="group">
+                            <a asp-controller="News" asp-action="Edit" asp-route-id="@obj.Id" class="btn btn-primary mx-2">
+                                <i class="bi bi-pencil-square"></i> Edit
+                            </a>
+                            <a asp-controller="News" asp-action="Delete" asp-route-id="@obj.Id" class="btn btn-danger mx-2">
+                                <i class="bi bi-trash-fill"></i> Delete
+                            </a>
+                        </td>
+                    </tr>
+                        }
+            </tbody>
+        </table>
+    </div>
+</div>
+</div>

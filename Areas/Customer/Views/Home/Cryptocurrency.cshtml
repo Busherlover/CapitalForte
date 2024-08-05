@@ -1,0 +1,82 @@
+﻿@model List<ScrapedDataYahooCrypto>
+
+
+@{
+    ViewData["Title"] = "Cryptocurrency";
+}
+
+
+
+<div class="tabalesCenterAndBackground">
+    <h1 style="color:black;">Cryptocurrency</h1>
+        <table class="display" id="myTable">
+            <thead>
+                    
+                <tr>
+                        <th>
+                            Symbol
+                        </th>
+                        <th>
+                            Name
+                        </th>
+                        <th>
+                            Price
+                        </th>
+                        <th>
+                            Change
+                        </th>
+                        <th>
+                            Change In Procentige
+                        </th>
+                        <th>
+                            Market Cap
+                        </th>
+                        <th>
+                            Volume In Currency
+                        </th>
+                        <th>
+                            Volume Out Currency 24Hr
+                        </th>
+                        <th>
+                            Total Volume All Currencies 24Hr
+                        </th>
+                        <th>
+                            Circulating Supply
+                        </th>
+                       
+                </tr>
+
+            <thead>
+
+            <tbody>
+@*                         @foreach (var obj in Model)
+                        {
+                    <tr>
+                            <td>@obj.Symbol</td>
+
+                            <td>@obj.Name</td>
+
+                            <td>@obj.Price</td>
+
+                            <td>@obj.Change</td>
+
+                            <td>@obj.ChangeInProcentige</td>
+
+                            <td>@obj.MarketCap</td>
+
+                            <td>@obj.VolumeInCurrency</td>
+
+                            <td>@obj.VolumeOutCurrency24Hr</td>
+
+                            <td>@obj.TotalVolumeAllCurrencies24Hr</td>
+
+                            <td>@obj.CirculatingSupply</td>
+
+                      
+                    </tr>
+                        } *@
+            </tbody>
+        </table>
+
+</div>
+  

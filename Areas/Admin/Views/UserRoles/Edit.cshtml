@@ -1,0 +1,40 @@
+﻿@model ApplicationUser
+@{
+    ViewData["Title"] = "Editfor @Model.UserName";
+    var allRoles = ViewBag.AllRoles as List<Microsoft.AspNetCore.Identity.IdentityRole>;
+    var userRoles = ViewBag.UserRoles as IList<string>;
+    Layout = "_Layout-NoFooter";
+
+}
+<body class="backgroundEditUserRole">
+    <div class="alignMEdit">
+        <div class="col-md-7 backgroundFont">
+            <section>
+                <h1 style="font-size: 50px; color:black;">Edit Roles for @Model.UserName</h1>
+              
+                <div class="flex-container">
+                    <form asp-action="Edit" method="post">
+                        <input type="hidden" asp-for="Id" value="@Model.Id" />
+
+                        <div class="checkbox-grid">
+                            @foreach (var role in allRoles)
+                            {
+                                <div class="checkbox-item">
+                                    <input type="checkbox" class="checkRoles" name="roles" value="@role.Name"
+                                    @(userRoles.Contains(role.Name) ? "checked" : "") />
+                                    <label>@role.Name</label>
+                                </div>
+                            }
+                        </div>
+
+                        <div class="actions">
+                            <input type="submit" value="Save" class="btn btn-primary" />
+                            <a asp-action="ListUsers" class="btn btn-secondary">Back to List</a>
+                        </div>
+                    </form>
+                </div>
+                
+            </section>
+        </div>
+    </div>
+</body>
